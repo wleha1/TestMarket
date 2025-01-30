@@ -2,16 +2,23 @@ const productList = document.querySelector(".product-list");
 const pagination = document.querySelector(".pagination");
 const cartTotal = document.getElementById("cart-total");
 const clearCartButton = document.querySelector(".clear-cart");
+const categoryFilter = document.getElementById("category");
+const sortFilter = document.getElementById("sort");
+const searchInput = document.getElementById("search");
 
 let totalPrice = 0;
-const itemsPerPage = [];
+let allGoods = [];
+let itemsPerPage = [];
+let filteredGoods = [];
 
 async function loadGoods() {
   try {
     const response = await fetch("./goods.json");
     if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
     const data = await response.json();
-    return data.goods;
+    allGoods = data.goods;
+    filteredGoods = [...allGoods];
+    return filteredGoods;
   } catch (error) {
     console.error("Ошибка:", error);
     return [];
@@ -81,15 +88,45 @@ function createPageButton(number) {
   pagination.appendChild(button);
 }
 
-async function initGoods() {
-  const goods = await loadGoods();
+function clearPagination() {
+  pagination.innerHTML = ""; 
+}
+
+function filterAndSortGoods() {
+  const category = categoryFilter.value;
+  const sort = sortFilter.value;
+  const searchQuery = searchInput.value.toLowerCase();
+
+  let result = allGoods.filter(item => {
+    if (category !== "all" && item.category !== category) return false;
+    if (searchQuery && !item.title.toLowerCase().includes(searchQuery)) return false;
+    return true;
+  });
+
+
+  if (sort === "price-asc") {
+    result.sort((a, b) => a.price - b.price);
+  } else if (sort === "price-desc") {
+    result.sort((a, b) => b.price - a.price);
+  } else if (sort === "name-asc") {
+    result.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sort === "name-desc") {
+    result.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  filteredGoods = result;
+  paginateGoods();
+}
+
+function paginateGoods() {
+  itemsPerPage = [];
   let tempItems = [];
   let pageCount = 1;
 
-  goods.forEach((element, index) => {
+  filteredGoods.forEach((element, index) => {
     tempItems.push(element);
 
-    if (tempItems.length === 4 || index === goods.length - 1) {
+    if (tempItems.length === 4 || index === filteredGoods.length - 1) {
       itemsPerPage.push({ pageCount, items: [...tempItems] });
       createPageButton(pageCount);
       tempItems = [];
@@ -99,6 +136,24 @@ async function initGoods() {
 
   showPage(1);
 }
+
+async function initGoods() {
+  await loadGoods();
+  filterAndSortGoods();
+}
+
+categoryFilter.addEventListener('change', () => {
+  clearPagination();
+  filterAndSortGoods();
+});
+sortFilter.addEventListener('change', () => {
+  clearPagination();
+  filterAndSortGoods();
+});
+searchInput.addEventListener('input', () => {
+  clearPagination();
+  filterAndSortGoods();
+});
 
 clearCartButton.addEventListener("click", () => {
   totalPrice = 0;
