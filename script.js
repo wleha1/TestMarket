@@ -1,6 +1,9 @@
 const productList = document.querySelector(".product-list");
 const pagination = document.querySelector(".pagination");
 const cartTotal = document.getElementById("cart-total");
+const cartItemsContainer = document.createElement("div");
+cartItemsContainer.classList.add("cart-items");
+document.querySelector(".cart").insertBefore(cartItemsContainer, document.querySelector(".cart-footer"));
 const clearCartButton = document.querySelector(".clear-cart");
 const categoryFilter = document.getElementById("category");
 const sortFilter = document.getElementById("sort");
@@ -26,13 +29,23 @@ async function loadGoods() {
 }
 
 function updateCurrentPageButton(currentPage) {
-  const buttons = pagination.querySelectorAll('button');
-  buttons.forEach(button => button.classList.toggle('current', button.textContent == currentPage));
+  const buttons = pagination.querySelectorAll("button");
+  buttons.forEach((button) =>
+    button.classList.toggle("current", button.textContent == currentPage)
+  );
 }
 
-function handleAddToCart(price) {
+function updateCartDisplay(title, price) {
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-item");
+  cartItem.textContent = `${title} - ${price} руб.`;
+  cartItemsContainer.appendChild(cartItem);
+}
+
+function handleAddToCart(title, price) {
   totalPrice += price;
   cartTotal.textContent = totalPrice;
+  updateCartDisplay(title, price);
 }
 
 function createProductItem(element) {
@@ -57,7 +70,9 @@ function createProductItem(element) {
   const button = document.createElement("button");
   button.classList.add("add-to-cart");
   button.textContent = "Добавить в корзину";
-  button.addEventListener('click', () => handleAddToCart(parseInt(element.price, 10)));
+  button.addEventListener("click", () =>
+    handleAddToCart(element.title, parseInt(element.price, 10))
+  );
 
   item.append(img, h1, description, price, button);
   return item;
@@ -65,9 +80,9 @@ function createProductItem(element) {
 
 function showPage(pageNumber) {
   productList.innerHTML = "";
-  const page = itemsPerPage.find(p => p.pageCount === pageNumber);
+  const page = itemsPerPage.find((p) => p.pageCount === pageNumber);
   if (page) {
-    page.items.forEach(element => {
+    page.items.forEach((element) => {
       const item = createProductItem(element);
       productList.appendChild(item);
     });
@@ -75,12 +90,12 @@ function showPage(pageNumber) {
 }
 
 function createPageButton(number) {
-  const button = document.createElement('button');
+  const button = document.createElement("button");
   button.textContent = number;
-  button.classList.add('page-button');
-  if (number === 1) button.classList.add('current');
-  
-  button.addEventListener('click', () => {
+  button.classList.add("page-button");
+  if (number === 1) button.classList.add("current");
+
+  button.addEventListener("click", () => {
     showPage(number);
     updateCurrentPageButton(number);
   });
@@ -158,6 +173,7 @@ searchInput.addEventListener('input', () => {
 clearCartButton.addEventListener("click", () => {
   totalPrice = 0;
   cartTotal.textContent = totalPrice;
+  cartItemsContainer.innerHTML = ""; 
 });
 
 initGoods();
