@@ -113,7 +113,7 @@ function filterAndSortGoods() {
   const searchQuery = searchInput.value.toLowerCase();
 
   let result = allGoods.filter(item => {
-    if (category !== "all" && item.category !== category) return false;
+    if (category !== "all" && item.type !== category) return false;
     if (searchQuery && !item.title.toLowerCase().includes(searchQuery)) return false;
     return true;
   });

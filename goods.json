@@ -1,42 +1,42 @@
 {
     "goods": [
         {
-            "title": "Название",
+            "title": "Книга",
             "description": "Описание",
-            "type": "Books",
+            "type": "books",
             "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
-            "price": 1
+            "price": 153
+        },
+        {
+            "title": "Макбук",
+            "description": "Описание",
+            "type": "electronics",
+            "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
+            "price": 150000
+        },
+        {
+            "title": "Аляска куртка",
+            "description": "Описание",
+            "type": "clothing",
+            "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
+            "price": 20000
         },
         {
             "title": "Название",
             "description": "Описание",
-            "type": "Books",
+            "type": "books",
             "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
-            "price": 1
-        },
-        {
-            "title": "Название",
-            "description": "Описание",
-            "type": "Books",
-            "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
-            "price": 1
-        },
-        {
-            "title": "Название",
-            "description": "Описание",
-            "type": "Books",
-            "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
-            "price": 1
+            "price": 432
         },        {
             "title": "Название",
             "description": "Описание",
-            "type": "Books",
+            "type": "books",
             "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
-            "price": 1
+            "price": 1543
         },        {
             "title": "Название",
             "description": "Описание",
-            "type": "Books",
+            "type": "books",
             "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
             "price": 2400
         }
