@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интернет-магазин</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">
+      Интернет-магазин
+    </h1>
+
+    <div
+      class="filters bg-white p-6 rounded-lg shadow-md mb-8 flex flex-wrap gap-4"
+    >
+      <div class="flex items-center gap-2">
+        <label for="category" class="font-medium">Категория:</label>
+        <select
+          id="category"
+          class="p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="all">Все</option>
+          <option value="electronics">Электроника</option>
+          <option value="clothing">Одежда</option>
+          <option value="books">Книги</option>
+        </select>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <label for="sort" class="font-medium">Сортировка:</label>
+        <select
+          id="sort"
+          class="p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="default">По умолчанию</option>
+          <option value="price-asc">Цена (по возрастанию)</option>
+          <option value="price-desc">Цена (по убыванию)</option>
+          <option value="name-asc">Название (А-Я)</option>
+          <option value="name-desc">Название (Я-А)</option>
+        </select>
+      </div>
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Поиск по названию"
+        class="p-2 border rounded-md flex-grow focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div
+      class="product-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+      id="product-list"
+    ></div>
+
+    <div
+      class="pagination flex justify-center gap-2 mb-8"
+      id="pagination"
+    ></div>
+
+    <div class="cart bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">Корзина</h2>
+      <div id="cart-items" class="space-y-2"></div>
+      <p class="mt-4 text-lg font-medium">
+        Итого: <span id="cart-total" class="font-bold">0</span> руб.
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
