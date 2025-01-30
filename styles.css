@@ -167,8 +167,12 @@ body {
   
   .cart-items {
     flex-grow: 1;
-    margin-right: 20px;
-  }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px; 
+    align-items: center; 
+}
   
   .cart-item {
     display: flex;
