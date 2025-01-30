@@ -1,0 +1,11 @@
+{
+    "goods": [
+        {
+            "title": "Название",
+            "description": "Описание",
+            "type": "Books",
+            "imgUrl": "https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png",
+            "price": 1
+        }
+    ]
+}

@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Интернет-магазин</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интернет-магазин</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Интернет-магазин</h1>
 
-  <body class="bg-gray-100 p-8">
-    <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">
-      Интернет-магазин
-    </h1>
-
-    <div
-      class="filters bg-white p-6 rounded-lg shadow-md mb-8 flex flex-wrap gap-4"
-    >
-      <div class="flex items-center gap-2">
-        <label for="category" class="font-medium">Категория:</label>
-        <select
-          id="category"
-          class="p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-        >
+    <div class="filters">
+      <div class="filter-group">
+        <label for="category">Категория:</label>
+        <select id="category">
           <option value="all">Все</option>
           <option value="electronics">Электроника</option>
           <option value="clothing">Одежда</option>
@@ -28,12 +21,9 @@
         </select>
       </div>
 
-      <div class="flex items-center gap-2">
-        <label for="sort" class="font-medium">Сортировка:</label>
-        <select
-          id="sort"
-          class="p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-        >
+      <div class="filter-group">
+        <label for="sort">Сортировка:</label>
+        <select id="sort">
           <option value="default">По умолчанию</option>
           <option value="price-asc">Цена (по возрастанию)</option>
           <option value="price-desc">Цена (по убыванию)</option>
@@ -46,28 +36,32 @@
         type="text"
         id="search"
         placeholder="Поиск по названию"
-        class="p-2 border rounded-md flex-grow focus:ring-2 focus:ring-blue-500"
+        class="search-input"
       />
     </div>
 
-    <div
-      class="product-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
-      id="product-list"
-    ></div>
+    <div class="product-list" id="product-list">
+      <div class="item" type="Books">
+        <img src="https://gpbi-1c-prod-bitrix-uploads.storage.yandexcloud.net/resize_cache/19537/119bc3906ae28c051de20d973cab6dde/iblock/3af/3af322166e2e0410ea125461d8a339d0/5%20_21_.png" alt="">
+        <h1> Книга </h1>
+        <div class="description"> Арбитраж книга By Pavel </div>
 
-    <div
-      class="pagination flex justify-center gap-2 mb-8"
-      id="pagination"
-    ></div>
-
-    <div class="cart bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-2xl font-bold mb-4 text-gray-800">Корзина</h2>
-      <div id="cart-items" class="space-y-2"></div>
-      <p class="mt-4 text-lg font-medium">
-        Итого: <span id="cart-total" class="font-bold">0</span> руб.
-      </p>
+        <div class="price"> 1000 Руб. </div>
+        <button class="add-to-cart"> Добавить в корзину</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="pagination" id="pagination"></div>
+
+    <div class="cart">
+      <h2>Корзина</h2>
+      <div id="cart-items" class="cart-items"></div>
+      <p class="total">
+        Итого: <span id="cart-total">0</span> руб.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
